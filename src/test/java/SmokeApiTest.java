@@ -1,3 +1,5 @@
+import io.restassured.response.ValidatableResponse;
+
 import static io.restassured.RestAssured.given;
 
 public class SmokeApiTest {
@@ -17,11 +19,13 @@ public class SmokeApiTest {
                   "phone": "string",
                   "userStatus": 0
                   }""";
-        given()
+        ValidatableResponse response = given()
                 .header("accept", "application/json")
                 .header("content-type", "application/json")
                 .body(bodyJson)
-                .when().post(BASE_URL+ "user")
+                .when().post(BASE_URL + "user")
                 .then();
+        response.statusCode(200);
+        response.extract().response().prettyPrint();
     }
 }
