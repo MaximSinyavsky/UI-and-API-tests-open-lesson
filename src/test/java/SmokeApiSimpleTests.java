@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class SmokeApiSimpleTest {
+public class SmokeApiSimpleTests {
     private static final String BASE_URL = "https://petstore.swagger.io/v2/";
 
     @Test

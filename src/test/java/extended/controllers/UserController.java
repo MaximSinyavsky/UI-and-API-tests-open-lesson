@@ -2,6 +2,7 @@ package extended.controllers;
 
 import extended.models.User;
 import io.qameta.allure.Step;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
