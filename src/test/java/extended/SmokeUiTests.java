@@ -2,8 +2,10 @@ package extended;
 
 
 import extended.pages.HomePage;
+import extended.pages.WebFormPage;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @Feature("SmokeUiTests")
@@ -13,24 +15,24 @@ public class SmokeUiTests {
     HomePage homePage;
 
     @BeforeEach
-    void setUp(){
+    void setup() {
         homePage = new HomePage(new ChromeDriver());
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         homePage.quit();
     }
 
     @Test
     @DisplayName("Check form submitted and has title")
-    void submitWebFormTest(){
-        webFormPage = webFormPage = homePage.openWebForm();
+    void submitWebFormTest() {
+        WebFormPage webFormPage = webFormPage = homePage.openWebForm();
 
-        webFormPage.fillTextInpute("text");
+        webFormPage.fillTextInput("text");
         webFormPage.submitForm();
-        webelement title = webFormePage.getTitle();
+        WebElement title = webFormPage.getTitle();
 
-        Assertions.assertEquals("Form submitted", tittle.getText());
+        Assertions.assertEquals("Form submitted", title.getText());
     }
 }
