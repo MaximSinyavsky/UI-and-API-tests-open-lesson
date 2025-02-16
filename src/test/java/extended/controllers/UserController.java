@@ -13,6 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class UserController {
     RequestSpecification requestSpecification = given();
+
     private static final String BASE_URL = "https://petstore.swagger.io/v2/";
 
     public UserController() {
@@ -23,9 +24,10 @@ public class UserController {
         this.requestSpecification.filter(new AllureRestAssured());
     }
 
+    
     @Step("Create user")
     public Response createUser(User user) {
         this.requestSpecification.body(user);
         return given(this.requestSpecification).post("user").andReturn();
     }
-}
+} 

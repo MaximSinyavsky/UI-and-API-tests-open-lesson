@@ -10,18 +10,41 @@ repositories {
     mavenCentral()
 }
 
+ext{
+    selenideVersion = '7.7.1'
+    allureVersion = '2.29.1'
+    allurePluginVersion = '2.29.1'
+    junitVersion = '5.11.4'
+    lombokVersion = '1.18.36'
+    assertjVersion = '3.27.3'
+    slf4jApiVersion  = '2.0.16'
+    slf4jSimpleVersion  = '2.0.16'
+    restAssuredVersion = '5.5.0'
+    jacsonVersion = '2.18.2'
+    seleniumVersion = '4.28.0'
+}
+
+apply plugin: 'java'
+sourceCompatibility = JavaVersion.VERSION_23
+targetCompatibility = JavaVersion.VERSION_23
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation platform("org.junit:junit-bom:${junitVersion}")
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'io.rest-assured:rest-assured:5.5.0'
-    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.28.0'
-    testImplementation 'io.qameta.allure:allure-junit5:2.29.1'
-    testImplementation 'io.qameta.allure:allure-rest-assured:2.29.1'
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
-    testCompileOnly 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+    testImplementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacsonVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacsonVersion}"
+
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+
+    testImplementation "io.qameta.allure:allure-junit5:${allureVersion}"
+    testImplementation "io.qameta.allure:allure-rest-assured:${allureVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 }
 
 test {
